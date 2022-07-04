@@ -1,4 +1,4 @@
-# Serviço para envios de arquivos para o bucket no S3 AWS
+# Serviço para envios de arquivos para o S3 AWS:
 
 ⚙️ **Tecnologias**
 - Java 11
