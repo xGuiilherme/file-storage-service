@@ -1,1 +1,1 @@
-# Serviço de armazenamento de arquivos para S3 AWS
+# Serviço para envios de arquivos para S3 AWS
