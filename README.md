@@ -1,17 +1,17 @@
-# Serviço para envios de arquivos para o S3 AWS:
+## Serviço para envios de arquivos para o S3 AWS:
 
 ⚙️ **Tecnologias**
 - Java 11
 - Framework Spring Boot
 
-# Projeto
+## Projeto
 
 Está aplicação tem como objetivo demonstrar um exemplo de implementação para fazer um **envio** e **download** de arquivos para o bucket no S3 da AWS.
 
-# Exemplo
+## Exemplo
 **Configurando credenciais e região para autorizar uma solicitação na AWS:**
 
-**Obs: Método implementado pode carregar credenciais de um sistema existente ou carregar novas credenciais.**
+>**Obs: Método implementado pode carregar credenciais de um sistema existente ou carregar novas credenciais.**
 ```java
 @Configuration
 public class StorageConfig {
@@ -37,7 +37,7 @@ public class StorageConfig {
 #
 **Métodos para envio, download e exclusão dos arquivos no S3 via Postman:**
 
-**Obs: O conteúdo do arquivo é armazenado na memória ou temporariamente no disco. Em ambos os casos, o usuário é responsável por copiar o conteúdo do arquivo para um nível de sessão ou armazenamento persistente. O armazenamento temporário será limpo no final do processamento da solicitação.**
+>**Obs: O conteúdo do arquivo é armazenado na memória ou temporariamente no disco. Em ambos os casos, o usuário é responsável por copiar o conteúdo do arquivo para um nível de sessão ou armazenamento persistente. O armazenamento temporário será limpo no final do processamento da solicitação.**
 ```java
 @RestController
 @RequestMapping("/file")
