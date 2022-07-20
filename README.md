@@ -16,7 +16,7 @@ Nesta implementação utilizamos alguns dos exemplos abaixo para manipular os ar
 - Baixar um arquivo específico
 
 ## Exemplo
-**Configurando credenciais e região para autorizar uma solicitação na AWS:**
+**Configurando credenciais e definindo a região para autorizar o acesso de uma solicitação na AWS:**
 
 >**Obs: Método implementado pode carregar credenciais de um sistema existente ou carregar novas credenciais.**
 ```java
