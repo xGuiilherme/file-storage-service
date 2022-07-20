@@ -3,6 +3,7 @@
 ⚙️ **Tecnologias**
 - Java 11
 - Framework Spring Boot
+- AmazonAWS S3
 
 ## Projeto
 
