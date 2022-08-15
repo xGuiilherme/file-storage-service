@@ -7,7 +7,7 @@
 
 ## Projeto
 
-Está aplicação tem como objetivo demonstrar um exemplo de implementação para fazer um **envio** e **download** de arquivos para o bucket no S3 da AWS.
+Esta aplicação tem como objetivo demonstrar um exemplo de implementação para fazer um **envio** e **download** de arquivos para o bucket no S3 da AWS.
 
 Nesta implementação utilizamos alguns dos exemplos abaixo para manipular os arquivos e o bucket que foram criados:
 
