@@ -15,7 +15,7 @@ Nesta implementação utilizamos alguns dos exemplos abaixo para manipular os ar
 - Deletar um arquivo específico.
 - Baixar um arquivo específico
 
-## Exemplo
+## Exemplos
 **Configurando credenciais e definindo a região para autorizar o acesso de uma solicitação na AWS:**
 
 >**Obs: Método implementado pode carregar credenciais de um sistema existente ou carregar novas credenciais.**
