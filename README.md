@@ -1,110 +1,20 @@
-## Serviço para enviar arquivos ao Bucket no AWS S3:
+## Envio de Arquivos para o Amazon S3:
 
-⚙️ **Tecnologias**
+Este é um serviço em Java 11 baseado no Framework Spring Boot que permite o envio de arquivos para um Bucket no Amazon AWS S3. Com esta aplicação, você pode enviar, deletar e baixar arquivos de forma fácil e eficiente no S3 da AWS.
+
+## **Tecnologias Utilizadas**
 - Java 11
 - Framework Spring Boot
-- Amazon AWS - S3
+- Amazon AWS - S3 SDK
 
 ## Projeto
 
-Esta aplicação tem como objetivo demonstrar um exemplo de implementação para fazer um **envio** e **download** de arquivos para o bucket no S3 da AWS.
+Esta aplicação tem como objetivo demonstrar um exemplo de implementação para fazer o envio e download de arquivos para um Bucket no S3 da AWS. Nesta implementação, utilizamos alguns dos exemplos abaixo para manipular os arquivos e o Bucket que foram criados:
 
-Nesta implementação utilizamos alguns dos exemplos abaixo para manipular os arquivos e o bucket que foram criados:
+- Enviar um arquivo para o Bucket que está criado no S3 da AWS.
+- Deletar um arquivo específico do Bucket.
+- Baixar um arquivo específico do Bucket.
 
-- Enviar um arquivo para o Bucket que está criado no S3/AWS.
-- Deletar um arquivo específico.
-- Baixar um arquivo específico
-
-## Exemplos
-**Configurando credenciais e definindo a região para autorizar o acesso de uma solicitação na AWS:**
-
->**Obs: Método implementado pode carregar credenciais de um sistema existente ou carregar novas credenciais.**
-```java
-@Configuration
-public class StorageConfig {
-
-    @Value("${cloud.aws.credentials.access-key}")
-    protected String accessKey;
-
-    @Value("${cloud.aws.credentials.secret-key}")
-    protected String accessSecret;
-
-    @Value("${cloud.aws.region.static}")
-    protected String region;
-
-    @Bean
-    public AmazonS3 s3Client() {
-        AWSCredentials credentials = new BasicAWSCredentials(accessKey, accessSecret);
-        return AmazonS3ClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(credentials))
-                .withRegion(region).build();
-    }
-}
-```
-#
-**Métodos para envio, download e exclusão dos arquivos no S3 via Postman:**
-
->**Obs: O conteúdo do arquivo é armazenado na memória ou temporariamente no disco. Em ambos os casos, o usuário é responsável por copiar o conteúdo do arquivo para um nível de sessão ou armazenamento persistente. O armazenamento temporário será limpo no final do processamento da solicitação.**
-```java
-@RestController
-@RequestMapping("/file")
-public class StorageController {
-
-    @Autowired
-    protected StorageService service;
-
-    @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
-        return new ResponseEntity<>(service.uploadFile(file), HttpStatus.OK);
-    }
-
-    @GetMapping("/download/{fileName}")
-    public ResponseEntity<ByteArrayResource> downloadFile(String fileName) {
-        byte[] data = service.downloadFile(fileName);
-        ByteArrayResource resource = new ByteArrayResource(data);
-        return ResponseEntity
-                .ok()
-                .contentLength(data.length)
-                .header("Content-type", "application/octet-stream")
-                .header("Content-disposition", "attachment; fileName=\"" + fileName + "\"")
-                .body(resource);
-    }
-
-    @DeleteMapping("/delete/{fileName}")
-    public ResponseEntity<String> deleteFile(@PathVariable String fileName) {
-        return new ResponseEntity<>(service.deleteFile(fileName), HttpStatus.OK);
-    }
-}
-```
-# 
-**Nesta aplicação foi utilizado o application.yml para definir o acesso da aws, porta, nome do bucket e tamanho do arquivo:**
-```java
-cloud:
-  aws:
-    credentials:
-      access-key:
-      secret-key:
-    region:
-      static: us-east-2
-    stack:
-      auto: false
-
-application:
-  bucket:
-    name:
-
-
-spring:
-  servlet:
-    multipart:
-      enabled: true
-      file-size-threshold: 2MB
-      max-file-size: 5MB
-      max-request-size: 10MB
-
-server:
-  port: 9090
-```
 #
 **Dependencia necessaria para conectar ao aws**
 ```xml
